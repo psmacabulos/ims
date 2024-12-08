@@ -12,6 +12,6 @@ router.get("/items", async (req, res) => {
   //   const items = await Item.find()
   //   res.render("items", { items })
   // })
-  res.send("Hello you arrive correctly bro")
+  res.render("items")
 })
 module.exports = router

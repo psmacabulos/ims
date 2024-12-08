@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Item Number</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Created at</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+                <td>
+                    <a href="/edit-items/:id">Edit</a>
+                    <a href="/delete-items/:id">Delete</a>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+    <%- include('partials/footer') %>

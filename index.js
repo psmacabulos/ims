@@ -2,9 +2,12 @@ const express = require("express")
 const path = require("path")
 const methodOverride = require("method-override")
 const router = require("./routes/index")
+const connectDB = require("./config/database")
 
 const app = express()
 const PORT = 3000
+
+connectDB() // connect to the database
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
