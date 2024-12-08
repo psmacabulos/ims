@@ -7,11 +7,11 @@ router.get("/", async (req, res) => {
   res.render("index")
 })
 
-// Show the products table:
+// Show the items table:
 router.get("/items", async (req, res) => {
-  //   const items = await Item.find()
-  //   res.render("items", { items })
-  // })
-  res.render("items")
+  const items = await Item.find()
+
+  res.render("items", { items })
 })
+
 module.exports = router
