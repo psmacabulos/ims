@@ -44,7 +44,13 @@ router.patch("/edit-item/:id", async (req, res) => {
     await Item.updateOne({ _id: id }, { ...editedItem })
     res.redirect("/items")
   } catch (err) {
-    console.log(err)
+    res.status(500).send("server error")
   }
+})
+
+router.delete("/delete-item/:id", async (req, res) => {
+  const { id } = req.params
+  await Item.findByIdAndDelete(id)
+  res.redirect("/items")
 })
 module.exports = router

@@ -45,13 +45,16 @@
 
                         <td>
                             <a href="/edit-item/<%= item._id %>">Edit</a>
-                            <a href="/delete-item/<%= item._id %>">Delete</a>
-
+                            <form action="/delete-item/<%= item._id %>/?_method=DELETE" method="post">
+                                <button id="delete" type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
-
                     </tr>
                     <% }) %>
-
+                        <script>
+                            const removeItem = document.querySelector('#delete')
+                            removeItem.addEventListener('click', () => alert("This will permanently removed the item"))
+                        </script>
             </tbody>
         </table>
     </main>
