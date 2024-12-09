@@ -14,8 +14,16 @@ const seedDB = async () => {
 const connectDB = async () => {
   try {
     await mongoose.connect("mongodb://localhost:27017/inventory")
-    console.log("Connected to MongoDB ")
     await seedDB()
+    mongoose.connection.on("connected", () => {
+      console.log("Mongoose connected to the database")
+    })
+    mongoose.connection.on("err", () => {
+      console.log("Mongoose connection error", err)
+    })
+    mongoose.connection.on("disconnected", () => {
+      console.log("Mongoose disconnected to")
+    })
   } catch (err) {
     console.log("Failed to connect to MongoDB", err)
   }
