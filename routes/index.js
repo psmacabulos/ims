@@ -30,4 +30,21 @@ router.post("/add-item", async (req, res) => {
   }
 })
 
+router.get("/edit-item/:id", async (req, res) => {
+  const { id } = req.params
+  const item = await Item.findById(id)
+  console.log(item)
+  res.render("edit-item", { item })
+})
+
+router.patch("/edit-item/:id", async (req, res) => {
+  try {
+    const editedItem = req.body
+    const { id } = req.params
+    await Item.updateOne({ _id: id }, { ...editedItem })
+    res.redirect("/items")
+  } catch (err) {
+    console.log(err)
+  }
+})
 module.exports = router

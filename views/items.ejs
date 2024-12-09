@@ -11,6 +11,7 @@
                     <th scope="col">Item Number</th>
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
                     <th scope="col">Description</th>
                     <th scope="col">Created at</th>
@@ -30,6 +31,9 @@
                             <%= item.category %>
                         </td>
                         <td>
+                            <%= item.quantity %>
+                        </td>
+                        <td>
                             <%= item.price %>
                         </td>
                         <td>
@@ -40,8 +44,8 @@
                         </td>
 
                         <td>
-                            <a href="/edit-items/:id">Edit</a>
-                            <a href="/delete-items/:id">Delete</a>
+                            <a href="/edit-item/<%= item._id %>">Edit</a>
+                            <a href="/delete-item/<%= item._id %>">Delete</a>
 
                         </td>
 
