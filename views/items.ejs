@@ -1,66 +1,67 @@
 <%- include('partials/header') %>
-    <main class="container py-5">
-        <div class="row text-center">
+    <main class="container py-5 min-vh-100 d-flex flex-column justify-content-center">
+        <div class="row text-center mb-3 gap-3">
             <h1>FF Shoppe Inventory Management</h1>
-            <a href="./add-item" class="btn btn-primary w-auto">Add New</a>
-
+            <div>
+                <a href="./add-item" class="btn btn-primary w-auto ">Add New</a>
+                <a href="./" class="btn btn-outline-info w-auto justify-content-end">Back to main</a>
+            </div>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Item Number</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Created at</th>
-                    <th scope="col">Options</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% items.forEach((item, index)=> { %>
+        <div class=" row table-responsive">
+            <table class="table  table-hover table-bordered">
+                <thead>
                     <tr>
-                        <td>
-                            <%= index %>
-                        </td>
-                        <td>
-                            <%= item.name %>
-                        </td>
-                        <td>
-                            <%= item.category %>
-                        </td>
-                        <td>
-                            <%= item.quantity %>
-                        </td>
-                        <td>
-                            <%= item.price %>
-                        </td>
-                        <td>
-                            <%= item.description %>
-                        </td>
-                        <td>
-                            <%= item.createdAt %>
-                        </td>
-
-                        <td>
-                            <a href="/edit-item/<%= item._id %>">Edit</a>
-                            <form action="/delete-item/<%= item._id %>/?_method=DELETE" method="post">
-                                <button id="delete" type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
+                        <th scope="col">Item Number</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Created at</th>
+                        <th scope="col">Options</th>
                     </tr>
-                    <% }) %>
-                        <script>
-                            const removeItem = document.querySelector('#delete')
-                            removeItem.addEventListener('click', () => alert("This will permanently removed the item"))
-                        </script>
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="table-group-divider">
+                    <% items.forEach((item, index)=> { %>
+                        <tr>
+                            <th scope="row">
+                                <%= index %>
+                            </th>
+                            <td>
+                                <%= item.name %>
+                            </td>
+                            <td>
+                                <%= item.category %>
+                            </td>
+                            <td>
+                                <%= item.quantity %>
+                            </td>
+                            <td>
+                                <%= item.price %>
+                            </td>
+                            <td>
+                                <%= item.description %>
+                            </td>
+                            <td>
+                                <%= item.createdAt.toLocaleDateString() %>
+                            </td>
+                            <td class="d-flex gap-1">
+                                <a id="edit" href="/edit-item/<%= item._id %>" class="btn btn-light">Edit</a>
+                                <form action="/delete-item/<%= item._id %>/?_method=DELETE" method="post">
+                                    <button type="submit" class="btn btn-warning delete">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+
     </main>
-
-
-
-
-
+    e
     <%- include('partials/footer') %>
+        <script>
+            const removeItem = document.querySelectorAll('.delete')
+            removeItem.forEach(i => i.addEventListener('click', () => alert("This will delete the item")))
+        </script>
