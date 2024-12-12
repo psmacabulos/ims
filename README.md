@@ -4,6 +4,8 @@
 
 ## Project Overview
 
+This is my final project after 13 days of training sponsored by Bayan Academy and BPI. Thank you **Sir Aldrin Tamayo** for imparting your wisdom and patience to us!
+
 The Inventory Management System (IMS) is a web application designed to manage inventory items. Users can create, read, update, and delete items in the inventory. The application is built using the Model-View-Controller (MVC) architecture for maintainability and scalability.
 
 ## Technologies Used
@@ -55,4 +57,4 @@ The Inventory Management System (IMS) is a web application designed to manage in
 
 ## Deployment
 
-The application is deployed using Render and connects to MongoDB Atlas for database management
+The application is deployed using Render and connects to MongoDB Atlas for database management.The app can be viewed here: [IMS](https://inventory-management-v81v.onrender.com/)
