@@ -1,6 +1,13 @@
 const mongoose = require("mongoose")
 const Item = require("../models/item")
 const items = require("./seed")
+const dotenv = require("dotenv")
+
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config()
+} else {
+  dotenv.config({ path: ".env.production" })
+}
 
 const seedDB = async () => {
   const empty = await Item.countDocuments()
@@ -13,7 +20,7 @@ const seedDB = async () => {
 }
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/inventory")
+    await mongoose.connect(process.env.MONGODB_URI)
     await seedDB()
     mongoose.connection.on("connected", () => {
       console.log("Mongoose connected to the database")
