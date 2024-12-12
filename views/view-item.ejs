@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+    <main class="container py- ">
+        <div class="row w-50  min-vh-100 align-items-center mx-auto ">
+
+
+            </h1>
+            <div class="row border border-1 p-3">
+                <h1 class="mb-3 fs-2">You are viewing Item id: <span class="btn btn-outline-info">
+                        <%= item._id %>
+                    </span>
+                </h1>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input value="<%=item.name%>" name="name" type="text" class="form-control" id="name"
+                        aria-describedby="name" required readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <input value="<%=item.category%>" name="category" type="text" class="form-control" id="category"
+                        aria-describedby="name" required readonly> readonly
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input value="<%=item.quantity%>" name="quantity" type="number" class="form-control" id="quantity"
+                        aria-describedby="name" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input value="<%=item.price%>" name="price" t type="text" class="form-control" id="price"
+                        aria-describedby="name" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input value="<%=item.description%>" name="description" type="text" class="form-control"
+                        id="description" aria-describedby="name" readonly>
+                </div>
+
+
+                <a class="btn btn-primary btn-lg" href="/items">Back to Inventory</a>
+            </div>
+
+
+        </div>
+
+    </main>
+
+    <%- include('partials/footer') %>

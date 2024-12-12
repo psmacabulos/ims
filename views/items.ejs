@@ -46,6 +46,7 @@
                                 <%= item.createdAt.toLocaleDateString() %>
                             </td>
                             <td class="d-flex gap-1">
+                                <a id="edit" href="/view-item/<%= item._id %>" class="btn btn-light">View</a>
                                 <a id="edit" href="/edit-item/<%= item._id %>" class="btn btn-light">Edit</a>
                                 <form action="/delete-item/<%= item._id %>/?_method=DELETE" method="post">
                                     <button type="submit" class="btn btn-warning delete">Delete</button>

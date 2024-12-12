@@ -11,6 +11,18 @@ const showItems = async (req, res) => {
   }
 }
 
+// Show one item
+const viewItem = async (req, res) => {
+  try {
+    const { id } = req.params
+    const item = await Item.findById(id)
+    res.render("view-item", { item })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send("Server Error")
+  }
+}
+
 // Add item table
 const showAddItemForm = (req, res) => {
   res.render("add-item")
@@ -67,6 +79,7 @@ const deleteItem = async (req, res) => {
 
 module.exports = {
   showItems,
+  viewItem,
   showAddItemForm,
   addItem,
   showEditItemForm,

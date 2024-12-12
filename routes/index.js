@@ -10,6 +10,8 @@ router.get("/", (req, res) => {
 // Show the items table
 router.get("/items", ItemController.showItems)
 
+// Show item to view
+router.get("/view-item/:id", ItemController.viewItem)
 // Add item table
 router.get("/add-item", ItemController.showAddItemForm)
 
