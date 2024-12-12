@@ -3,7 +3,7 @@
         <div class="row w-50  min-vh-100 align-items-center mx-auto ">
 
             <form action="/edit-item/<%= item._id %>/?_method=PATCH" method="post">
-                <h1 class="mb-3 fs-2">Fill up the form to add the new item</h1>
+                <h1 class="mb-3 fs-2">Update the necessary field</h1>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input value="<%=item.name%>" name="name" type="text" class="form-control" id="name"
