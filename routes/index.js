@@ -1,56 +1,28 @@
 const express = require("express")
 const router = express.Router()
-const Item = require("../models/item")
+const ItemController = require("../controllers/itemController")
 
-// Show the landing page:
-router.get("/", async (req, res) => {
+// Show the landing page
+router.get("/", (req, res) => {
   res.render("index")
 })
 
-// Show the items table:
-router.get("/items", async (req, res) => {
-  const items = await Item.find()
+// Show the items table
+router.get("/items", ItemController.showItems)
 
-  res.render("items", { items })
-})
+// Add item table
+router.get("/add-item", ItemController.showAddItemForm)
 
-// Add item table:
-router.get("/add-item", async (req, res) => {
-  res.render("add-item")
-})
+// Add a new item
+router.post("/add-item", ItemController.addItem)
 
-router.post("/add-item", async (req, res) => {
-  try {
-    const newItem = new Item({ ...req.body })
-    await newItem.save()
-    res.redirect("/items")
-  } catch (err) {
-    console.log(err)
-    res.status(500).send("Server Error")
-  }
-})
+// Edit item form
+router.get("/edit-item/:id", ItemController.showEditItemForm)
 
-router.get("/edit-item/:id", async (req, res) => {
-  const { id } = req.params
-  const item = await Item.findById(id)
-  console.log(item)
-  res.render("edit-item", { item })
-})
+// Update an item
+router.patch("/edit-item/:id", ItemController.updateItem)
 
-router.patch("/edit-item/:id", async (req, res) => {
-  try {
-    const editedItem = req.body
-    const { id } = req.params
-    await Item.updateOne({ _id: id }, { ...editedItem })
-    res.redirect("/items")
-  } catch (err) {
-    res.status(500).send("server error")
-  }
-})
+// Delete an item
+router.delete("/delete-item/:id", ItemController.deleteItem)
 
-router.delete("/delete-item/:id", async (req, res) => {
-  const { id } = req.params
-  await Item.findByIdAndDelete(id)
-  res.redirect("/items")
-})
 module.exports = router
